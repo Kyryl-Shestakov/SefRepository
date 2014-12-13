@@ -1,2 +1,4 @@
 A simple text file to make some changes. 19:49 13.12.14
 A change made by original 20:27 13.12.14
+A change made by alternative 20:22  13.12.14
+

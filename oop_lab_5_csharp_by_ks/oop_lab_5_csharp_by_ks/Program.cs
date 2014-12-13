@@ -27,27 +27,27 @@ namespace oop_lab_5_csharp_by_ks
             long l;
 
             Console.WriteLine("\nCalling method synchronously:");
-            Console.WriteLine("The result is " + MyStaticMethod(ref s, out l, 'a'));
+            Console.WriteLine("The result is " + MyStaticMethod(ref s, out l, 'a')); //synchronous call of a method
 
             Console.WriteLine("\nCalling method in another thread:");
             s += 5;
 
             new Thread(() =>
             {
-                Console.WriteLine("The result is " + MyStaticMethod(ref s, out l, 'b'));
+                Console.WriteLine("The result is " + MyStaticMethod(ref s, out l, 'b')); //synchronous call in a new thread
             }).Start();
 
             for (int i = 0; i < 6; ++i)
             {
                 Thread.Sleep(1000);
-                Console.WriteLine("\nMain method running");
+                Console.WriteLine("\nMain method running"); //view of concurrent working
             }
 
             Console.WriteLine("\nCalling method asynchronously (first way):");
             s += 5;
 
-            MyDelegate del = new MyDelegate(MyStaticMethod);
-            IAsyncResult iar = del.BeginInvoke(ref s, out l, 'c', null, null);
+            MyDelegate del = new MyDelegate(MyStaticMethod); 
+            IAsyncResult iar = del.BeginInvoke(ref s, out l, 'c', null, null); //usage of asynchronous call on a delegate
 
             for (int i = 0; i < 3; ++i)
             {

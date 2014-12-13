@@ -275,42 +275,42 @@ namespace oop_lab_5_csharp_by_ks
         /// <param name="secondParameter"></param>
         /// <param name="thirdParameter"></param>
         /// <returns></returns>
-        //static async Task<int> MyStaticMethodAsync(short firstParameter, long secondParameter, char thirdParameter)
-        //{
-        //    return await Task.Run(async () =>
-        //        {
-        //            secondParameter = 10L;
+        static async Task<int> MyStaticMethodAsync(short firstParameter, long secondParameter, char thirdParameter)
+        {
+            return await Task.Run(async () =>
+                {
+                    secondParameter = 10L;
 
-        //            Console.WriteLine("Inside my static method:");
-        //            Console.WriteLine("First parameter is " + firstParameter);
-        //            Console.WriteLine("Second parameter is " + secondParameter);
-        //            Console.WriteLine("Third parameter is " + thirdParameter);
-        //            Console.Write("Wait for a method to complete");
+                    Console.WriteLine("Inside my static method:");
+                    Console.WriteLine("First parameter is " + firstParameter);
+                    Console.WriteLine("Second parameter is " + secondParameter);
+                    Console.WriteLine("Third parameter is " + thirdParameter);
+                    Console.Write("Wait for a method to complete");
 
-        //            for (int i = 0; i != 50; ++i)
-        //            {
-        //                Console.Write(".");
-        //                //Thread.Sleep(100);
-        //                await Task.Delay(100);
-        //            }
+                    for (int i = 0; i != 50; ++i)
+                    {
+                        Console.Write(".");
+                        //Thread.Sleep(100);
+                        await Task.Delay(100);
+                    }
 
-        //            Console.WriteLine("\nThe method is complete");
+                    Console.WriteLine("\nThe method is complete");
 
-        //            return (int)(int)firstParameter + (int)secondParameter;
-        //        });
-        //}
+                    return (int)(int)firstParameter + (int)secondParameter;
+                });
+        }
 
-        ///// <summary>
-        ///// Asynchronous static method
-        ///// </summary>
-        ///// <param name="firstParameter"></param>
-        ///// <param name="secondParameter"></param>
-        ///// <param name="thirdParameter"></param>
-        ///// <returns></returns>
-        //static async Task DisplayResult(short firstParameter, long secondParameter, char thirdParameter)
-        //{
-        //    secondParameter = 10L;
-        //    Console.WriteLine("The result is " + await MyStaticMethodAsync(firstParameter, secondParameter, thirdParameter));
-        //}
+        /// <summary>
+        /// Asynchronous static method
+        /// </summary>
+        /// <param name="firstParameter"></param>
+        /// <param name="secondParameter"></param>
+        /// <param name="thirdParameter"></param>
+        /// <returns></returns>
+        static async Task DisplayResult(short firstParameter, long secondParameter, char thirdParameter)
+        {
+            secondParameter = 10L;
+            Console.WriteLine("The result is " + await MyStaticMethodAsync(firstParameter, secondParameter, thirdParameter));
+        }
     }
 }

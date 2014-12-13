@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -90,152 +90,152 @@ namespace oop_lab_5_csharp_by_ks
             iar.AsyncWaitHandle.WaitOne();
             Thread.Sleep(1000);
 
-            //Console.WriteLine("\nCalling method asynchronously (fifth way):");
-            //s += 5;
+            Console.WriteLine("\nCalling method asynchronously (fifth way):");
+            s += 5;
 
-            //Task task = DisplayResult(s, l, 'g');
+            Task task = DisplayResult(s, l, 'g');
 
-            //for (int i = 0; i < 3; ++i)
-            //{
-            //    Thread.Sleep(1000);
-            //    Console.WriteLine("\nMain method running");
-            //}
+            for (int i = 0; i < 3; ++i)
+            {
+                Thread.Sleep(1000);
+                Console.WriteLine("\nMain method running");
+            }
 
-            //task.Wait();
-            //Console.WriteLine();
+            task.Wait();
+            Console.WriteLine();
 
-            ////Several threads competing for one resource
+            //Several threads competing for one resource
 
-            //Console.WriteLine("Illustration of several threads accessing shared resource simultaneously\n");
-            //Thread[] threads = new Thread[5];
-            //int count = 0;
+            Console.WriteLine("Illustration of several threads accessing shared resource simultaneously\n");
+            Thread[] threads = new Thread[5];
+            int count = 0;
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i] = new Thread(() =>
-            //    {
-            //        for (int j = 0; j < 5; ++j)
-            //        {
-            //            Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
-            //            Thread.Sleep(10);
-            //        }
-            //    });
-            //    threads[i].Priority = (ThreadPriority)i;
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i] = new Thread(() =>
+                {
+                    for (int j = 0; j < 5; ++j)
+                    {
+                        Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
+                        Thread.Sleep(10);
+                    }
+                });
+                threads[i].Priority = (ThreadPriority)i;
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Start();
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Start();
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Join();
-            //}
-            //Console.WriteLine();
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Join();
+            }
+            Console.WriteLine();
 
-            ////Synchronization of these threads
+            //Synchronization of these threads
 
-            //Console.WriteLine("Illustration of thread synchronization with a lock:\n");
-            //count = 0;
-            //object obj = new object();
+            Console.WriteLine("Illustration of thread synchronization with a lock:\n");
+            count = 0;
+            object obj = new object();
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i] = new Thread(() =>
-            //    {
-            //        lock (obj)
-            //        {
-            //            for (int j = 0; j < 5; ++j)
-            //            {
-            //                Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
-            //                Thread.Sleep(10);
-            //            }
-            //        }
-            //    });
-            //    threads[i].Priority = (ThreadPriority)i;
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i] = new Thread(() =>
+                {
+                    lock (obj)
+                    {
+                        for (int j = 0; j < 5; ++j)
+                        {
+                            Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
+                            Thread.Sleep(10);
+                        }
+                    }
+                });
+                threads[i].Priority = (ThreadPriority)i;
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Start();
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Start();
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Join();
-            //}
-            //Console.WriteLine();
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Join();
+            }
+            Console.WriteLine();
 
-            ////Using Mutex
+            //Using Mutex
 
-            //Console.WriteLine("Illustration of thread synchronization using Mutex:");
-            //count = 0;
-            //Mutex mtx = new Mutex();
+            Console.WriteLine("Illustration of thread synchronization using Mutex:");
+            count = 0;
+            Mutex mtx = new Mutex();
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i] = new Thread(() =>
-            //    {
-            //        mtx.WaitOne();
-            //        Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " acquired a mutex\n");
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i] = new Thread(() =>
+                {
+                    mtx.WaitOne();
+                    Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " acquired a mutex\n");
 
-            //        for (int j = 0; j < 5; ++j)
-            //        {
-            //            Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
-            //            Thread.Sleep(10);
-            //        }
+                    for (int j = 0; j < 5; ++j)
+                    {
+                        Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
+                        Thread.Sleep(10);
+                    }
 
-            //        Console.WriteLine("\nThread with priority " + Thread.CurrentThread.Priority + " released a mutex\n");
-            //        mtx.ReleaseMutex();
-            //    });
-            //    threads[i].Priority = (ThreadPriority)i;
-            //}
+                    Console.WriteLine("\nThread with priority " + Thread.CurrentThread.Priority + " released a mutex\n");
+                    mtx.ReleaseMutex();
+                });
+                threads[i].Priority = (ThreadPriority)i;
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Start();
-            //}
+        for (int i = 0; i < 5; ++i)
+        {
+            threads[i].Start();
+        }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Join();
-            //}
+        for (int i = 0; i < 5; ++i)
+        {
+            threads[i].Join();
+        }
 
-            ////Using Semaphore
+        //Using Semaphore
 
-            //Console.WriteLine("Illustration of thread synchronization using Semaphore:\n");
-            //count = 0;
-            //Semaphore smphr = new Semaphore(2, 2);
+        Console.WriteLine("Illustration of thread synchronization using Semaphore:\n");
+        count = 0;
+        Semaphore smphr = new Semaphore(2, 2);
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i] = new Thread(() =>
-            //    {
-            //        smphr.WaitOne();
-            //        Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " acquired a semaphore\n");
+        for (int i = 0; i < 5; ++i)
+        {
+            threads[i] = new Thread(() =>
+            {
+                smphr.WaitOne();
+                Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " acquired a semaphore\n");
 
-            //        for (int j = 0; j < 5; ++j)
-            //        {
-            //            Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
-            //            Thread.Sleep(10);
-            //        }
+                    for (int j = 0; j < 5; ++j)
+                    {
+                        Console.WriteLine("Thread with priority " + Thread.CurrentThread.Priority + " has the resource: " + ++count);
+                        Thread.Sleep(10);
+                    }
 
-            //        Console.WriteLine("\nThread with priority " + Thread.CurrentThread.Priority + " released a semaphore\n");
-            //        smphr.Release();
-            //    });
-            //    threads[i].Priority = (ThreadPriority)i;
-            //}
+                    Console.WriteLine("\nThread with priority " + Thread.CurrentThread.Priority + " released a semaphore\n");
+                    smphr.Release();
+                });
+                threads[i].Priority = (ThreadPriority)i;
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Start();
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Start();
+            }
 
-            //for (int i = 0; i < 5; ++i)
-            //{
-            //    threads[i].Join();
-            //}
+            for (int i = 0; i < 5; ++i)
+            {
+                threads[i].Join();
+            }
 
             Console.ReadKey(true);
         }

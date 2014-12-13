@@ -1,0 +1,6 @@
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\bin\Debug\oop_lab_5_csharp_by_ks.exe.config
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\bin\Debug\oop_lab_5_csharp_by_ks.exe
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\bin\Debug\oop_lab_5_csharp_by_ks.pdb
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\obj\Debug\oop_lab_5_csharp_by_ks.csprojResolveAssemblyReference.cache
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\obj\Debug\oop_lab_5_csharp_by_ks.exe
+C:\Users\Kyryl\Documents\Visual Studio 2013\Projects\Educational_Labs\sophomore_year\oop_lab_5_csharp_by_ks\oop_lab_5_csharp_by_ks\obj\Debug\oop_lab_5_csharp_by_ks.pdb
